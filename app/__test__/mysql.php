@@ -2,7 +2,7 @@
 
 $user = 'root';
 $pass = 'root';
-$server = '172.25.0.103';
+$server = '172.24.0.103';
 
 $dbh = new PDO( "mysql:host=$server", $user, $pass );
 $dbs = $dbh->query( 'SHOW DATABASES' );
