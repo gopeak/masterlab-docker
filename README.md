@@ -1,6 +1,6 @@
 ----
-# Lnmpr
-Linux + Nginx + Mysql5.7 + PHP7 + Redis
+# MasterLab-Docker
+Docker + Linux + Nginx + Mysql5.7 + PHP7 + Redis
 
 ----
 ## docker安装及docker-compose安装
