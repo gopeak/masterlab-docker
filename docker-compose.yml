@@ -1,0 +1,73 @@
+version: "2"
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./app:/usr/share/nginx/html
+      - ./nginx/conf:/etc/nginx
+      - ./nginx/logs:/var/log/nginx
+    links:
+      - php-fpm
+    networks:
+      masterlab:
+        ipv4_address: 172.24.0.100
+
+  # php-fpm
+  php-fpm:
+    build: ./php-fpm
+    container_name: php-fpm
+    expose:
+      - "9000"
+    volumes:
+      - ./app:/usr/share/nginx/html
+      - ./php-fpm/conf:/usr/local/etc
+      - ./php-fpm/logs:/usr/local/var/log/
+    links:
+      - mysql
+      - redis
+    networks:
+      masterlab:
+        ipv4_address: 172.24.0.101
+
+  redis:
+    build: ./redis
+    container_name: redis
+    volumes:
+      - ./redis/data:/data
+    expose:
+      - "6379"
+    networks:
+      masterlab:
+        ipv4_address: 172.24.0.102
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    expose:
+      - "3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql
+      - ./mysql/logs/:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: clark
+      MYSQL_PASSWORD: clark
+      MYSQL_DATABASE: test
+    networks:
+      masterlab:
+        ipv4_address: 172.24.0.103
+
+networks:
+  masterlab:
+    # 使用已有网络
+    external: true
+    #driver: bridge
+    #ipam:
+    #  config:
+    #  - subnet: 172.24.0.0/24
