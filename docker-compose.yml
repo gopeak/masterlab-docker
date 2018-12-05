@@ -38,13 +38,10 @@ services:
       - redis
     volumes:
       - ./data/app/script:/var/www/html
-      - ./data/app/storage:/usr/src/masterlab/app/storage
-      - ./data/app/config:/usr/src/masterlab/app/config
+      - ./data/app/www:/usr/src/masterlab
     links:
       - masterlab_db
       - redis
-    ports:
-      - "8888:80"
     restart: always
     networks:
       masterlab:
@@ -56,12 +53,12 @@ services:
     build: ./nginx
     container_name: nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "8000:80"
+      - "4430:443"
     volumes:
-      - ./app:/usr/share/nginx/html
-      - ./data/nginx/conf:/etc/nginx
+      - ./data/app:/usr/share/nginx/html
       - ./data/nginx/logs:/var/log/nginx
+      - ./data/nginx/conf.d/masterlab.conf:/etc/nginx/conf.d/masterlab.conf
     links:
       - app
     networks:

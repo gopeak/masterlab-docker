@@ -160,7 +160,7 @@ RUN set -ex; \
     chmod +x /root/entrypoint.sh
 
 #VOLUME /var/www/html
-VOLUME ["/var/www/html/","/usr/src/masterlab/app/storage","/usr/src/masterlab/app/config"]
+VOLUME ["/var/www/html/","/usr/src/masterlab"]
 
 ENTRYPOINT ["/root/entrypoint.sh"]
 CMD ["php-fpm"]
