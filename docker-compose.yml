@@ -33,16 +33,28 @@ services:
   app:
     image: masterlab:v1
     container_name: MasterLab
+    volumes:
+      - ./data/app/config/app.cfg.php:/var/log/nginx
+      - ./data/nginx/conf.d/masterlab.conf:/etc/nginx/conf.d/masterlab.conf
     depends_on:
       - masterlab_db
       - redis
-    volumes:
-      - ./data/app/script:/var/www/html
-      - ./data/app/www:/usr/src/masterlab
     links:
       - masterlab_db
       - redis
     restart: always
+    environment:
+      MASTERLAB_DOMAIN: http://masterlab.ink
+      MASTERLAB_DB_HOST: masterlab_db
+      MASTERLAB_DB_PORT: 3306
+      MASTERLAB_DB_USER: root
+      MASTERLAB_DB_PASSWORD: 123456
+      MASTERLAB_DB_DATANAME: masterlab
+      MASTERLAB_CACHE_ENABLE: true
+      MASTERLAB_REDIS_SERVER_DATA_HOST: redis
+      MASTERLAB_REDIS_SERVER_DATA_PORT: 6379
+      MASTERLAB_REDIS_SERVER_SESSION_HOST: redis
+      MASTERLAB_REDIS_SERVER_SESSION_PORT: 6379
     networks:
       masterlab:
         ipv4_address: 172.24.0.101
@@ -53,12 +65,13 @@ services:
     build: ./nginx
     container_name: nginx
     ports:
-      - "8000:80"
+      - "8000:8090"
       - "4430:443"
     volumes:
-      - ./data/app:/usr/share/nginx/html
       - ./data/nginx/logs:/var/log/nginx
       - ./data/nginx/conf.d/masterlab.conf:/etc/nginx/conf.d/masterlab.conf
+    volumes_from:
+      - app:rw
     links:
       - app
     networks:

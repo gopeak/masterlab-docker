@@ -5,7 +5,6 @@ ENV MASTERLAB_VERSION v1.0-beta
 ENV HORNET_FRAMEWORK v0.4.6
 
 COPY sources.list /etc/apt/sources.list
-COPY entrypoint.sh /root/
 
 ADD ./redis-4.2.0.tgz ./memcached-3.0.4.tgz /tmp/
 
@@ -156,11 +155,15 @@ RUN set -ex; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
     rm -rf /var/lib/apt/lists/*
 
+
+
+VOLUME /var/www/html
+#VOLUME ["/var/www/html/","/usr/src/masterlab"]
+
+COPY entrypoint.sh /usr/local/bin/
+
 RUN set -ex; \
-    chmod +x /root/entrypoint.sh
+    chmod +x /usr/local/bin/entrypoint.sh
 
-#VOLUME /var/www/html
-VOLUME ["/var/www/html/","/usr/src/masterlab"]
-
-ENTRYPOINT ["/root/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["php-fpm"]

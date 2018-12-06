@@ -9,6 +9,13 @@ run_as() {
     fi
 }
 
+cp -rf /usr/src/* /var/www/html
 
+
+# 修改配置
+cp -f /var/www/html/masterlab/env.ini-example /var/www/html/masterlab/env.ini
+
+
+echo >&2 "Complete! MasterLab has been successfully copied to $PWD"
 
 exec "$@"
