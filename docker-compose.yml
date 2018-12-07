@@ -2,6 +2,7 @@ version: "2"
 
 services:
   masterlab_db:
+    build: ./mysql
     container_name: masterlab_db
     image: mysql:5.7
     volumes:
@@ -29,13 +30,11 @@ services:
       masterlab:
         ipv4_address: 172.24.0.102
 
+
   # app
   app:
     image: masterlab:v1
     container_name: MasterLab
-    volumes:
-      - ./data/app/config/app.cfg.php:/var/log/nginx
-      - ./data/nginx/conf.d/masterlab.conf:/etc/nginx/conf.d/masterlab.conf
     depends_on:
       - masterlab_db
       - redis
@@ -44,13 +43,13 @@ services:
       - redis
     restart: always
     environment:
-      MASTERLAB_DOMAIN: http://masterlab.ink
+      MASTERLAB_DOMAIN: http://masterlab.docker:8000/
       MASTERLAB_DB_HOST: masterlab_db
       MASTERLAB_DB_PORT: 3306
       MASTERLAB_DB_USER: root
       MASTERLAB_DB_PASSWORD: 123456
       MASTERLAB_DB_DATANAME: masterlab
-      MASTERLAB_CACHE_ENABLE: true
+      MASTERLAB_CACHE_ENABLE: 1
       MASTERLAB_REDIS_SERVER_DATA_HOST: redis
       MASTERLAB_REDIS_SERVER_DATA_PORT: 6379
       MASTERLAB_REDIS_SERVER_SESSION_HOST: redis

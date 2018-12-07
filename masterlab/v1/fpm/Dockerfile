@@ -2,7 +2,7 @@ FROM php:7.2-fpm-stretch
 
 ENV TZ=Asia/Shanghai
 ENV MASTERLAB_VERSION v1.0-beta
-ENV HORNET_FRAMEWORK v0.4.6
+ENV HORNET_FRAMEWORK v1.0
 
 COPY sources.list /etc/apt/sources.list
 
@@ -17,10 +17,7 @@ RUN set -ex; \
         bzip2 \
         busybox-static \
     ; \
-    rm -rf /var/lib/apt/lists/*; \
-    \
-    mkdir -p /var/spool/cron/crontabs; \
-    echo '*/15 * * * * php -f /var/www/html/cron.php' > /var/spool/cron/crontabs/www-data
+    rm -rf /var/lib/apt/lists/*
 
 # install the PHP extensions we need
 RUN set -ex; \
