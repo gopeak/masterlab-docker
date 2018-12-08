@@ -39,7 +39,7 @@ services:
       MASTERLAB_DOMAIN: http://masterlab.docker:8000/
       MASTERLAB_DB_HOST: masterlab_db
       MASTERLAB_DB_PORT: 3306
-      MASTERLAB_DB_USER: root
+      MASTERLAB_DB_USER: docker
       MASTERLAB_DB_PASSWORD: 123456
       MASTERLAB_DB_DATANAME: masterlab
       MASTERLAB_CACHE_ENABLE: 1
