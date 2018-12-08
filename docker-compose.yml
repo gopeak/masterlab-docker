@@ -2,7 +2,7 @@ version: "2"
 
 services:
   masterlab_db:
-    image: gopeak/masterlab_db:dev
+    build: ./db/1.0
     container_name: masterlab_db
     volumes:
       - ./data/mysql/data:/var/lib/mysql
@@ -26,7 +26,7 @@ services:
 
   # app
   app:
-    image: masterlab:v1
+    build: ./masterlab/1
     container_name: MasterLab
     depends_on:
       - masterlab_db
@@ -39,7 +39,7 @@ services:
       MASTERLAB_DOMAIN: http://masterlab.docker:8000/
       MASTERLAB_DB_HOST: masterlab_db
       MASTERLAB_DB_PORT: 3306
-      MASTERLAB_DB_USER: root
+      MASTERLAB_DB_USER: docker
       MASTERLAB_DB_PASSWORD: 123456
       MASTERLAB_DB_DATANAME: masterlab
       MASTERLAB_CACHE_ENABLE: 1
