@@ -65,4 +65,11 @@ docker exec -it CONTAINER_NAME /bin/bash
 
 
 
-
+## FAQ
+1. 在windows下使用 DockerToolbox ， mysql数据挂载到本地（共享目录到window主机磁盘上） 会出现权限问题
+解决办法：
+挂载到DockerToolbox上并给目录777权限，不要挂载到共享目录里
+```
+    volumes:
+      - /home/docker/data:/var/lib/mysql
+```
