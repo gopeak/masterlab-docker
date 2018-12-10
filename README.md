@@ -73,3 +73,6 @@ docker exec -it CONTAINER_NAME /bin/bash
     volumes:
       - /home/docker/data:/var/lib/mysql
 ```
+
+2. docker-compose up 启动阶段masterlab报 standard_init_linux.go:178: exec user process caused "no such file or directory"
+解决办法：vi entrypoint.sh  重新保存一下
