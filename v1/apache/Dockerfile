@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-stretch
+FROM php:7.2-apache-stretch
 
 ENV TZ=Asia/Shanghai
 ENV MASTERLAB_VERSION v1.1
@@ -157,4 +157,4 @@ RUN set -ex; \
     chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["php-fpm"]
+CMD ["apache2-foreground"]
