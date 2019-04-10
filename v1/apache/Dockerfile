@@ -45,6 +45,7 @@ RUN set -ex; \
         ldap \
         opcache \
         pcntl \
+        mysqli \
         pdo_mysql \
         pdo_pgsql \
         zip \
@@ -147,6 +148,9 @@ RUN sed -i "/www-data/s/\/usr\/sbin\/nologin/\/bin\/bash/g" /etc/passwd
 
 # delete symbolic link for windows share folder
 RUN rm -rf /usr/src/masterlab/vendor/bin/*
+
+# Open rewrite module of apache
+RUN a2enmod rewrite
 
 VOLUME /var/www/html
 #VOLUME ["/var/www/html/","/usr/src/masterlab"]
