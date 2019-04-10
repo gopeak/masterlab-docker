@@ -42,8 +42,8 @@ http://ip:port/install
 ----
 ##### 使用fpm镜像(开发调试中，敬请期待)
 
-
-
+----
+##### 使用docker-compose进行部署(开发调试中，敬请期待)
 
 ## FAQ
 1. 进入安装页面的redis地址填写什么？mysql连接地址填写什么？
