@@ -31,7 +31,7 @@ docker run -d --name redis -v /your-redis-path:/data redis redis-server --append
 
 - 启动masterlab容器
 ```bash
-docker run -d -it --name masterlab --link mysql --link redis -p 8888:80 -v /your-masterlab-path:/var/www/html masterlab
+docker run -d -it --name masterlab --link mysql --link redis -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
 ```
 
 - 访问以下地址进行安装
