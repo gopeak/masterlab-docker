@@ -1,5 +1,3 @@
 .git
 !.gitignore
 .DS_Store
-/v1/apache/*.tgz
-/v1/fpm/*.tgz
