@@ -78,7 +78,95 @@ http://ip:8888/install
 ```
 
 ----
-##### 使用docker-compose进行部署(开发调试中，敬请期待)
+#### 使用docker-compose进行部署
+获得功能齐全的设置的最简单方法是使用docker-compose文件。 但有太多不同的可能性来设置您的运行环境方案，所以这里只是给出一些示例。
+
+##### 基于masterlab:apache
+```bash
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - 3306:3306
+    command: --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION --innodb_use_native_aio=0
+    restart: always
+    volumes:
+      - /your-mysql-path:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - /your-redis-path:/data
+
+  masterlab:
+    image: gopeak/masterlab
+    container_name: masterlab
+    ports:
+      - 8888:80
+    links:
+      - mysql
+      - redis
+    volumes:
+      - /your-masterlab-path:/var/www/html
+    restart: always
+```
+运行 docker-compose up -d, 访问 http://ip:8888/install 进行安装流程.
+
+##### 基于masterlab:fpm
+```bash
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - 3306:3306
+    command: --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION --innodb_use_native_aio=0
+    restart: always
+    volumes:
+      - /your-mysql-path:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+
+  redis:
+    image: redis
+    container_name: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - /your-redis-path:/data
+
+  masterlab:
+    image: gopeak/masterlab:fpm
+    container_name: masterlab
+    links:
+      - mysql
+      - redis
+    volumes:
+      - /your-masterlab-path:/var/www/html
+    restart: always
+
+  web:
+    image: mynginx
+    container_name: nginx
+    ports:
+      - 8888:80
+    links:
+      - masterlab
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    volumes_from:
+      - masterlab
+    restart: always
+```
+运行 docker-compose up -d, 访问 http://ip:8888/install 进行安装流程.
 
 ## FAQ
 1. 进入安装页面的redis地址填写什么？mysql连接地址填写什么？
