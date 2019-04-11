@@ -10,7 +10,7 @@
 ----
 ### 如何使用这个镜像
 
-此镜像被设计用于微服务环境。有两种版本可供选择apache版本和fpm版本.
+此镜像被设计用于微服务环境。由hub.docker.com自动构建, 有两种版本可供选择apache版本和fpm版本.
 
 - apache版本包括一个apache web服务器，为了让你的部署更灵活，没有搭载mysql和redis。它的设计很容易使用，一条命令就能运行起来。masterlab:last就是此版本。
 
