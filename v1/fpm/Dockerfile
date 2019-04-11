@@ -45,6 +45,7 @@ RUN set -ex; \
         ldap \
         opcache \
         pcntl \
+        mysqli \
         pdo_mysql \
         pdo_pgsql \
         zip \
