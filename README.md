@@ -36,11 +36,15 @@ docker run -d -it --name masterlab --link mysql --link redis -p 8888:80 -v /your
 
 - 访问以下地址进行安装
 ```bash
-http://ip:port/install
+http://ip:8888/install
 ```
 
 ----
 ##### 使用fpm镜像(开发调试中，敬请期待)
+
+要使用fpm镜像，您需要一个额外的web服务器，它可以代理http请求到容器的fpm端口。对于fpm连接，此容器公开端口9000。在大多数情况下，您可能希望使用另一个容器或主机作为代理。如果您使用您的主机，您可以直接在端口9000上找到您的masterlab容器的地址。如果您使用另一个容器，请确保将它们添加到相同的docker网络(通过docker run --network <NAME>…或者docker-compose文件)。
+
+由于fastCGI进程无法提供静态文件(css、image、js)，Web服务器需要访问这些文件。这可以通过volumes-from选项来实现。您可以在docker-compose部分找到更多信息。
 
 ----
 ##### 使用docker-compose进行部署(开发调试中，敬请期待)
