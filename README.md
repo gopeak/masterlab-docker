@@ -12,12 +12,12 @@
 
 此镜像被设计用于微服务环境。由hub.docker.com自动构建, 有两种版本可供选择apache版本和fpm版本.
 
-- apache版本包括一个apache web服务器，为了让你的部署更灵活，没有搭载mysql和redis。它的设计很容易使用，一条命令就能运行起来。masterlab:last就是此版本。
+- apache版本包括一个apache web服务器，为了让你的部署更灵活，没有搭载mysql和redis。它的设计很容易使用，一条命令就能运行起来。gopeak/masterlab:last就是此版本。
 
 - fpm版本是基于php-fpm的镜像，运行了一个fastcgi进程，为您的Masterlab页面提供服务。要使用此镜像，必须与其他支持fastcgi端口的web服务器相结合 ，如Nginx、Caddy等。
 
 ----
-##### 使用apache镜像
+#### 使用apache镜像
 
 - 启动mysql容器
 ```bash
@@ -29,7 +29,7 @@ docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -v /your
 docker run -d --name redis -v /your-redis-path:/data redis redis-server --appendonly yes
 ```
 
-- 启动masterlab容器
+- 启动masterlab:apache容器
 ```bash
 docker run -d -it --name masterlab --link mysql --link redis -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
 ```
@@ -40,13 +40,42 @@ http://ip:8888/install
 ```
 
 ----
-##### 使用fpm镜像
+#### 使用fpm镜像
 
 要使用fpm镜像，您需要一个额外的web服务器，它可以代理http请求到容器的fpm端口。对于fpm连接，此容器公开端口9000。在大多数情况下，您可能希望使用另一个容器或主机作为代理。如果您使用您的主机，您可以直接在端口9000上找到您的masterlab容器的地址。如果您使用另一个容器，请确保将它们添加到相同的docker网络(通过docker run --network <NAME>…或者docker-compose文件)。
+
+###### 基础使用
 ```bash
 docker run -d --name masterlab gopeak/masterlab:fpm
 ```
 由于fastCGI进程无法提供静态文件(css、image、js)，Web服务器需要访问这些文件。这可以通过volumes-from选项来实现。您可以在《使用docker-compose进行部署》部分找到更多信息。
+
+###### 启动全部运行环境(nginx+masterlab+mysql+redis)
+- 启动mysql容器
+```bash
+docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -v /your-mysql-path:/var/lib/mysql mysql:5.7 --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION --innodb_use_native_aio=0
+```
+
+- 启动redis容器
+```bash
+docker run -d --name redis -v /your-redis-path:/data redis redis-server --appendonly yes
+```
+
+- 启动masterlab:fpm容器
+```bash
+docker run -d -it --name masterlab --link mysql --link redis -v /your-masterlab-path:/var/www/html gopeak/masterlab:fpm
+```
+
+- 启动nginx容器
+[关于nginx配置的示例](https://github.com/gopeak/masterlab-docker/tree/master/examples/docker-compose/with-nginx/fpm/nginx), 在生产环境下需要按需扩展nginx.conf的内容
+```bash
+docker run --name nginx -d mynginx
+```
+
+- 访问以下地址进行安装
+```bash
+http://ip:8888/install
+```
 
 ----
 ##### 使用docker-compose进行部署(开发调试中，敬请期待)
