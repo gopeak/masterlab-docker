@@ -63,16 +63,16 @@ docker run -d --name redis -v /your-redis-path:/data redis redis-server --append
 
 - 启动masterlab:fpm容器
 ```bash
-docker run -d -it --name masterlab --link mysql --link redis -v /your-masterlab-path:/var/www/html gopeak/masterlab:fpm
+docker run -d --name masterlab --link mysql --link redis -v /your-masterlab-path:/var/www/html gopeak/masterlab:fpm
 ```
 
 - 启动nginx容器
-[关于nginx配置的示例](https://github.com/gopeak/masterlab-docker/tree/master/examples/docker-compose/with-nginx/fpm/nginx), 在生产环境下需要按需扩展nginx.conf的内容
+[关于nginx配置的示例](https://github.com/gopeak/masterlab-docker/blob/master/examples/docker-compose/with-nginx/fpm/nginx/nginx.conf), 请自行构建mynginx的镜像(docker build -t mynginx .)，在生产环境下需要按需扩展nginx.conf的内容。
 ```bash
-docker run --name nginx -d mynginx
+docker run -d --name nginx --link masterlab -p 8888:80 --volumes-from masterlab mynginx
 ```
 
-- 访问以下地址进行安装
+- 访问以下地址进行安装流程
 ```bash
 http://ip:8888/install
 ```
