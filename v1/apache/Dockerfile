@@ -2,7 +2,7 @@ FROM php:7.2-apache-stretch
 
 ENV TZ=Asia/Shanghai
 ENV MASTERLAB_VERSION v1.1
-ENV MASTERLAB_DOMAIN
+ENV MASTERLAB_DOMAIN=
 
 COPY sources.list /etc/apt/sources.list
 
