@@ -8,6 +8,9 @@ branches:
   only:
     - master
 
+before_install:
+  - sudo apt-get install -y nmap
+
 before_script:
   - echo "Preparation stage"
   - image="gopeak/masterlab:socket"
@@ -16,5 +19,5 @@ before_script:
 script:
   - docker pull "$image"
   - docker run -d --name mlsocket -p 9002:9002 gopeak/masterlab:socket
-  - telnet 127.0.0.1 9002
+  - nmap 127.0.0.1 -p 9002 | grep open
 
