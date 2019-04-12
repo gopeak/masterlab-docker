@@ -10,13 +10,13 @@
 ----
 ### 如何使用这个镜像
 
-此镜像被设计用于微服务环境。由hub.docker.com自动构建, 有两种版本可供选择apache版本和fpm版本以及异步事件服务器socket版本.
+此镜像被设计用于微服务环境。由hub.docker.com自动构建, 有两种版本可供选择apache版本和fpm版本以及异步事件服务器socket版本。
 
 - apache版本包括一个apache web服务器，为了让你的部署更灵活，没有搭载mysql和redis。它的设计是易于使用，一条命令就能运行起来。gopeak/masterlab:last就是此版本。
 
 - fpm版本是基于php-fpm的镜像，运行了一个fastcgi进程，为您的Masterlab页面提供服务。要使用此镜像，必须与其他支持fastcgi端口的web服务器相结合 ，如Nginx、Caddy等。
 
-- socket版本是masterlab架构中的异步服务组件，涉及到邮件推送等异步服务，需要与masterlab同时部署
+- socket版本是masterlab架构中的异步服务组件，涉及到邮件推送等异步服务，需要与masterlab同时部署。
 
 ----
 #### 使用apache镜像
@@ -48,7 +48,7 @@ MYSQL_PASSWORD  123456
 
 - 启动masterlab:apache容器
 ```bash
-docker run -d -it --name masterlab --link mysql --link redis --mlsocket -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
+docker run -d -it --name masterlab --link mysql --link redis --link mlsocket -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
 ```
     masterlab:apache的环境变量
     ```
