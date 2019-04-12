@@ -34,13 +34,20 @@ EOF
 # start cron
 cron
 
+if [ -z $MASTERLAB_DOMAIN ]; then
+    # 未设置MASTERLAB_DOMAIN
+    MASTERLAB_DOMAIN_CUSTOM=""
+else
+    MASTERLAB_DOMAIN_CUSTOM="ServerName  ${MASTERLAB_DOMAIN}"
+fi
+
 # modify apache config
 mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf.bak
 cat > /etc/apache2/sites-enabled/masterlab.conf <<EOF
 <VirtualHost *:80>
     DocumentRoot /var/www/html/app/public
     # 这里修改成你自己的域名
-    # ServerName  www.yoursite.com
+    ${MASTERLAB_DOMAIN_CUSTOM}
     <Directory />
         Options Indexes FollowSymLinks
         AllowOverride All
