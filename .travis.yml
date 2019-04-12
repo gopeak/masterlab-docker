@@ -1,6 +1,20 @@
 language: bash
-services: docker
+dist: jugg
+
+services:
+  - docker
 
 branches:
   only:
     - master
+
+before_script:
+  - echo "Preparation stage"
+  - image="gopeak/masterlab:socket"
+
+
+script:
+  - docker pull "$image"
+  - docker run -d --name mlsocket -p 9002:9002 gopeak/masterlab:socket
+  - telnet 127.0.0.1 9002
+
