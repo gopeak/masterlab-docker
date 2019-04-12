@@ -50,6 +50,10 @@ MYSQL_PASSWORD  123456
 ```bash
 docker run -d -it --name masterlab --link mysql --link redis --mlsocket -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
 ```
+    masterlab:apache的环境变量
+    ```
+MASTERLAB_DOMAIN
+    ```
 
 - 访问以下地址进行安装
 ```bash
