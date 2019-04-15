@@ -82,9 +82,23 @@ docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -v /your
 docker run -d --name redis -v /your-redis-path:/data redis redis-server --appendonly yes
 ```
 
+- 启动masterlab:socket容器
+```bash
+docker run -d --name mlsocket --link mysql -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=masterlab -e MYSQL_USER=root -e MYSQL_PASSWORD=password gopeak/masterlab:socket
+```
+    masterlab:socket的环境变量默认值
+    ```
+APP_PORT        9002
+MYSQL_HOST      mysql
+MYSQL_PORT      3306
+MYSQL_DB_NAME   masterlab
+MYSQL_USER      root
+MYSQL_PASSWORD  123456
+    ```
+
 - 启动masterlab:fpm容器
 ```bash
-docker run -d --name masterlab --link mysql --link redis -v /your-masterlab-path:/var/www/html gopeak/masterlab:fpm
+docker run -d --name masterlab --link mysql --link redis --link mlsocket -v /your-masterlab-path:/var/www/html gopeak/masterlab:fpm
 ```
 
 - 启动nginx容器
@@ -123,8 +137,23 @@ services:
     image: redis
     container_name: redis
     command: redis-server --appendonly yes
+    restart: always
     volumes:
       - /your-redis-path:/data
+
+  mlsocket:
+    image: gopeak/masterlab:socket
+    container_name: mlsocket
+    restart: always
+    links:
+      - mysql
+    environment:
+      - APP_PORT=9002
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DB_NAME=masterlab
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123456
 
   masterlab:
     image: gopeak/masterlab
@@ -134,6 +163,7 @@ services:
     links:
       - mysql
       - redis
+      - mlsocket
     volumes:
       - /your-masterlab-path:/var/www/html
     restart: always
@@ -161,8 +191,23 @@ services:
     image: redis
     container_name: redis
     command: redis-server --appendonly yes
+    restart: always
     volumes:
       - /your-redis-path:/data
+
+  mlsocket:
+    image: gopeak/masterlab:socket
+    container_name: mlsocket
+    restart: always
+    links:
+      - mysql
+    environment:
+      - APP_PORT=9002
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DB_NAME=masterlab
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123456
 
   masterlab:
     image: gopeak/masterlab:fpm
@@ -170,6 +215,7 @@ services:
     links:
       - mysql
       - redis
+      - mlsocket
     volumes:
       - /your-masterlab-path:/var/www/html
     restart: always
