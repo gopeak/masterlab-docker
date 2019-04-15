@@ -30,13 +30,6 @@ RUN set -ex; \
     chmod +x /go/src/app/masterlab_socket; \
     rm -rf /var/lib/apt/lists/*
 
-RUN set -ex; \
-    { \
-        echo 'net.ipv6.conf.all.disable_ipv6 = 1'; \
-        echo 'net.ipv6.conf.default.disable_ipv6 = 1 '; \
-        echo 'net.ipv6.conf.lo.disable_ipv6'; \
-    } >> /etc/sysctl.conf
-
 WORKDIR /go/src/app
 COPY entrypoint.sh /usr/local/bin/
 
