@@ -33,7 +33,7 @@ docker run -d --name redis -v /your-redis-path:/data redis redis-server --append
 
 - 启动masterlab:socket容器
 ```bash
-docker run -d --name mlsocket --link mysql -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=masterlab -e MYSQL_USER=root -e MYSQL_PASSWORD=123456 gopeak/masterlab:socket
+docker run -d --name mlsocket --link mysql -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=masterlab -e MYSQL_USER=root -e MYSQL_PASSWORD=password gopeak/masterlab:socket
 ```
     masterlab:socket的环境变量默认值
     ```

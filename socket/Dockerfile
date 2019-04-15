@@ -37,4 +37,6 @@ RUN set -ex; \
     chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+EXPOSE $APP_PORT
 CMD ["/go/src/app/masterlab_socket"]
