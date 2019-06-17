@@ -37,25 +37,25 @@ docker run -d --name redis -v /your-redis-path:/data redis redis-server --append
 ```bash
 docker run -d --name mlsocket --link mysql -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=masterlab -e MYSQL_USER=root -e MYSQL_PASSWORD=password gopeak/masterlab:socket
 ```
-    masterlab:socket的环境变量默认值
-    ```
+masterlab:socket的环境变量默认值
+```
 APP_PORT        9002
 MYSQL_HOST      mysql
 MYSQL_PORT      3306
 MYSQL_DB_NAME   masterlab
 MYSQL_USER      root
 MYSQL_PASSWORD  123456
-    ```
+```
 
 
 - 启动masterlab:apache容器
 ```bash
 docker run -d -it --name masterlab --link mysql --link redis --link mlsocket -p 8888:80 -v /your-masterlab-path:/var/www/html gopeak/masterlab
 ```
-    masterlab:apache的环境变量
-    ```
+masterlab:apache的环境变量
+```
 MASTERLAB_DOMAIN
-    ```
+```
 
 - 访问以下地址进行安装
 ```bash
@@ -88,15 +88,15 @@ docker run -d --name redis -v /your-redis-path:/data redis redis-server --append
 ```bash
 docker run -d --name mlsocket --link mysql -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 -e MYSQL_DB_NAME=masterlab -e MYSQL_USER=root -e MYSQL_PASSWORD=password gopeak/masterlab:socket
 ```
-    masterlab:socket的环境变量默认值
-    ```
+masterlab:socket的环境变量默认值
+```
 APP_PORT        9002
 MYSQL_HOST      mysql
 MYSQL_PORT      3306
 MYSQL_DB_NAME   masterlab
 MYSQL_USER      root
 MYSQL_PASSWORD  123456
-    ```
+```
 
 - 启动masterlab:fpm容器
 ```bash
