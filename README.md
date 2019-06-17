@@ -12,6 +12,8 @@
 
 此镜像被设计用于微服务环境。由hub.docker.com自动构建, 有两种版本可供选择apache版本和fpm版本以及异步事件服务器socket版本。
 
+> 注意：该镜像不支持ARM系列CPU架构
+
 - apache版本包括一个apache web服务器，为了让你的部署更灵活，没有搭载mysql和redis。它的设计是易于使用，一条命令就能运行起来。gopeak/masterlab:last就是此版本。
 
 - fpm版本是基于php-fpm的镜像，运行了一个fastcgi进程，为您的Masterlab页面提供服务。要使用此镜像，必须与其他支持fastcgi端口的web服务器相结合 ，如Nginx、Caddy等。
