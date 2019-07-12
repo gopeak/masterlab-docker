@@ -1,7 +1,7 @@
 FROM php:7.2-fpm-stretch
 
 ENV TZ=Asia/Shanghai
-ENV MASTERLAB_VERSION v1.1
+ENV MASTERLAB_VERSION v1.2
 
 COPY sources.list /etc/apt/sources.list
 
