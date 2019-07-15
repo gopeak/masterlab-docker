@@ -117,7 +117,7 @@ RUN set -ex; \
     curl -sS https://getcomposer.org/installer | php; \
     mv composer.phar /usr/local/bin/composer; \
     #composer config -g repo.packagist composer https://packagist.phpcomposer.com
-    composer config -g repo.packagist composer https://packagist.laravel-china.org
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # download masterlab source
 RUN set -ex; \
