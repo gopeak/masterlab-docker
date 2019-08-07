@@ -24,7 +24,9 @@ echo >&2 "MasterLab has been successfully copied to $PWD"
 
 chown -R $MASTERLAB_USER:$MASTERLAB_USER $MASTERLAB_MOUNT_POINT
 
-mkdir -p /var/spool/cron/crontabs
+if [ ! -d /var/spool/cron/crontabs ]; then
+    mkdir -p /var/spool/cron/crontabs
+fi
 cat > /var/spool/cron/crontabs/$MASTERLAB_USER <<EOF
 0,30 22-23 * * * php -f $MASTERLAB_MOUNT_POINT/app/server/timer/project.php
 55 23 * * * php -f $MASTERLAB_MOUNT_POINT/app/server/timer/projectDayReport.php
