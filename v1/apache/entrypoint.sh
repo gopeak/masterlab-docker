@@ -80,5 +80,4 @@ if [ ! -f /etc/apache2/sites-enabled/masterlab.conf ]; then
     echo >&2 "Complete! MasterLab-configure Initializing finished"
 fi
 
-
 exec "$@"
