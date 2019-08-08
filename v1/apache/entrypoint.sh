@@ -75,7 +75,7 @@ if [ ! -f /etc/apache2/sites-enabled/masterlab.conf ]; then
         ErrorLog \${APACHE_LOG_DIR}/error.log
         CustomLog \${APACHE_LOG_DIR}/access.log combined
     </VirtualHost>
-    EOF
+EOF
 
     echo >&2 "Complete! MasterLab-configure Initializing finished"
 fi
