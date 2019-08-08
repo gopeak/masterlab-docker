@@ -12,4 +12,6 @@ cp -f $DEPS_REDIS_PACKAGE $DEPS_MEMCACHE_PACKAGE $V1_DOCKERFILE_APACHE
 cp -f $DEPS_REDIS_PACKAGE $DEPS_MEMCACHE_PACKAGE $V1_DOCKERFILE_FPM
 
 
-
+bash -n v1/apache/entrypoint.sh
+bash -n v1/fpm/entrypoint.sh
+bash -n socket/entrypoint.sh
