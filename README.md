@@ -59,10 +59,13 @@ docker build -t php2-cli ./php-cli/php72
 
 
 - 启动 `Swoole` 进程
-
+```
  docker run -it --rm --name www-data \
     -p 9002:9002 \
     -v "$PWD":/var/www/html/masterlab/app/bin \
     -w /var/www/html/masterlab/app/bin \
     php2-cli \
     php  swoole_server.php
+```
+
+	
