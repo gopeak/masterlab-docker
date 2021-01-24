@@ -44,7 +44,22 @@ http://127.0.0.1/ （可配置强制跳转 https）
 
 
  
-### 第六步，启动Swoole服务访问
+### 第六步，启动Swoole服务访问(未测试)
+
+- 首先，自定义构建 `PHP-CLI` 镜像，安装 `Git`，`Composer`，`Swoole` 等扩展和工具
+
+```shell
+# 构建镜像
+docker build -t php2-cli ./php-cli/php72
+```
+
+
+
 - 启动 `Swoole` 进程
 
- 
+ docker run -it --rm --name www-data \
+    -p 9002:9002 \
+    -v "$PWD":/var/www/html/masterlab/app/bin \
+    -w /var/www/html/masterlab/app/bin \
+    php2-cli \
+    php  swoole_server.php
