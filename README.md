@@ -32,9 +32,9 @@ $ docker-compose up -d   // 容器编排命令
 ### 第五步，赋予权限
 
 ```
-$ cd docker ps   // 查看运行的php容器id,加入id为 
-$ docker exec -it f291c3543c54 /bin/bash   // 进入php
-$ chown -R www-data:www-data ./   // 进入php
+$ cd docker ps   // 查看运行的php容器id
+$ docker exec -it php72 /bin/bash   // 进入php 
+$ chown -R www-data:www-data ./   // 赋予读写权限
 ```
 
 
