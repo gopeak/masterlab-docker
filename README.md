@@ -1,4 +1,4 @@
-
+docker hub 上的 gopeak/masterlab 已经失效，请勿使用；目前只支持Masterlab3.0的版本  
 
 ### 第一步，安装依赖工具
 
