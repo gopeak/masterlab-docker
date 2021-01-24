@@ -1,4 +1,4 @@
-![demo-portainer.jpg](demo-portainer.jpg)
+
 
 ### 第一步，安装依赖工具
 
