@@ -15,16 +15,17 @@ $ git clone https://github.com/gopeak/masterlab-docker.git
 ### 第三步，获取Masterlab程序
 
 ```
-$ cd ./www
+$ cd ./masterlab-docker/www
 $ git clone https://github.com/gopeak/masterlab.git
+$ cd ./masterlab
 $ unzip vendor.zip          // 解压依赖的类库
 ```
    
 ### 第三步，运行容器编排
 
 ```
-$ cd masterlab-docker   // 进入项目根目录
-$ docker-compose up -d   // 容器编排命令
+$ cd ../../              // 回到asterlab-docker的根目录
+$ docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建议使用国内的加速镜像
 ```
 
 启用服务，第一次需要构建镜像
