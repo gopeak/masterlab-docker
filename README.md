@@ -2,7 +2,7 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 
 ### 第一步，安装依赖工具
 
-- Git  // yum install git
+- Git   
 - Docker [https://docs.docker.com/install/]
 - Docker-compose [https://docs.docker.com/compose/install/#install-compose]
 
