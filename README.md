@@ -61,13 +61,17 @@ docker build -t php2-cli ./php-cli/php72
 
 
 - 启动 `Swoole` 进程
+
+修改并保存 ./www/masterlab/bin/swoole_server.php 找到第25行，设置'daemonize' => true
+
+
 ```shell
-docker run -it --rm --name www-data \
+docker run -it --rm --name www-data  --network masterlab-docker_docker_net  --ip 172.100.0.8 \
     -p 9002:9002 \
-    -v "$PWD":/var/www/html/masterlab/bin \
-    -w /var/www/html/masterlab/bin \
+     -v "$PWD"/www/masterlab:/usr/workspaces/project \
+    -w /usr/workspaces/project \
     php2-cli \
-    php  swoole_server.php
+    php  ./bin/swoole_server.php
 ```
 
 	
