@@ -66,7 +66,7 @@ docker build -t php2-cli ./php-cli/php72
 ```shell
 docker run -d  -it --rm --name www-data  --network masterlab-docker_docker_net  --ip 172.100.0.8 \
     -p 9002:9002 \
-     -v "$PWD"/www/masterlab:/usr/workspaces/project \
+    -v "$PWD"/www/masterlab:/usr/workspaces/project \
     -w /usr/workspaces/project \
     php2-cli \
     php  ./bin/swoole_server.php
