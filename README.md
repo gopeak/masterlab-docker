@@ -33,7 +33,7 @@ $ docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建�
 ### 第五步，赋予权限
 
 ```
-$ docker ps                                   // 查看运行的php容器id,加入id为 f4e5af6b62d8
+$ docker ps                                   // 查看运行的php容器id,假如id为 f4e5af6b62d8
 $ docker exec -it f4e5af6b62d8 /bin/bash      // 进入php 
 $ chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
 ```
