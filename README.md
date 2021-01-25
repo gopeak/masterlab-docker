@@ -46,6 +46,7 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 注: 连接数据库的地址，用户名,密码分别为  
 172.100.0.5 root 123456
 
+安装成功后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
 
  
 ### 第七步，启动Swoole服务访问(未测试)
