@@ -64,8 +64,8 @@ docker build -t php2-cli ./php-cli/php72
 ```shell
 docker run -it --rm --name www-data \
     -p 9002:9002 \
-    -v "$PWD":/var/www/html/masterlab/app/bin \
-    -w /var/www/html/masterlab/app/bin \
+    -v "$PWD":/var/www/html/masterlab/bin \
+    -w /var/www/html/masterlab/bin \
     php2-cli \
     php  swoole_server.php
 ```
