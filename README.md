@@ -49,8 +49,7 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 安装成功后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
 
  
-### 第七步，启动Swoole服务访问(未测试)
-
+### 第七步，启动Swoole服务
 - 首先，自定义构建 `PHP-CLI` 镜像，安装 `Git`，`Composer`，`Swoole` 等扩展和工具
 
 ```shell
