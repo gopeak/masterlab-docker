@@ -1,8 +1,8 @@
 Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只支持Masterlab3.0的版本  
 
-### 第一步，安装依赖工具
+### 第一步，首先安装以下命令行工具
 
-- dit unzip 
+- git unzip 
 - docker [https://docs.docker.com/install/]
 - docker-compose [https://docs.docker.com/compose/install/#install-compose]
 
@@ -27,7 +27,7 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 
 
 ### 第三步 配置镜像加速器（可选）
-针对Docker客户端版本大于 1.10.0 的用户
+Linux操作系统针对Docker客户端版本大于 1.10.0 的用户
 您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器 
 ```
 mkdir -p /etc/docker
@@ -39,7 +39,7 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 ```
-
+其他操作系统 请参考 `https://www.runoob.com/docker/docker-mirror-acceleration.html`
    
 ### 第四步，运行容器编排
 
