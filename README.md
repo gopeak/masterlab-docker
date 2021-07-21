@@ -25,22 +25,20 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 ```
 
 
-### 第三步 镜像加速（可选）
-创建一个daemon.json文件 
+### 第三步 配置镜像加速器（可选）
+针对Docker客户端版本大于 1.10.0 的用户
+您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器 
 ```
- vim /etc/docker/daemon.json   
+mkdir -p /etc/docker
+tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://c9jzs6ju.mirror.aliyuncs.com"]
+}
+EOF
+systemctl daemon-reload
+systemctl restart docker
 ```
-内容 
-```
- // 使用中国科技大学镜像加速地址,你可以修改为其他加速地址
- {  "registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]
- }
-```
-执行
-```
- systemctl daemon-reload
- systemctl restart docker
-```
+
    
 ### 第四步，运行容器编排
 
