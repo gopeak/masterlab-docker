@@ -11,7 +11,7 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 
 ```
  git clone https://gitee.com/firego/masterlab-docker.git
-# 国外网络请用 https://github.com/gopeak/masterlab-docker.git
+# 海外网络请用 https://github.com/gopeak/masterlab-docker.git
 
 ```
    
@@ -20,6 +20,7 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 ```
  cd ./masterlab-docker/www
  git clone https://gitee.com/firego/masterlab.git
+ # 海外网络请用 https://github.com/gopeak/masterlab.git
  cd ./masterlab
  unzip vendor.zip          // 解压依赖的类库
 ```
