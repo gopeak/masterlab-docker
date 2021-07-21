@@ -1,4 +1,4 @@
-Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只支持Masterlab3.0的版本  
+Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只支持Masterlab3.0以上版本  
 
 ### 第一步，首先安装以下命令行工具
 
