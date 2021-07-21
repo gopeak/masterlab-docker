@@ -2,26 +2,47 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 
 ### 第一步，安装依赖工具
 
-- Git   
-- Docker [https://docs.docker.com/install/]
-- Docker-compose [https://docs.docker.com/compose/install/#install-compose]
+- dit unzip 
+- docker [https://docs.docker.com/install/]
+- docker-compose [https://docs.docker.com/compose/install/#install-compose]
+
 
 ### 第二步，获取Docker项目代码
 
 ```
-$ git clone https://github.com/gopeak/masterlab-docker.git
+$ git clone https://gitee.com/firego/masterlab-docker.git
+# 国外网络请用 https://github.com/gopeak/masterlab-docker.git
+
 ```
    
 ### 第三步，获取Masterlab程序
 
 ```
 $ cd ./masterlab-docker/www
-$ git clone https://github.com/gopeak/masterlab.git
+$ git clone https://gitee.com/firego/masterlab.git
 $ cd ./masterlab
 $ unzip vendor.zip          // 解压依赖的类库
 ```
+
+
+### 第三步 镜像加速（可选）
+创建一个daemon.json文件 
+```
+$ vim /etc/docker/daemon.json   
+```
+内容 
+```
+$ // 使用中国科技大学镜像加速地址,你可以修改为其他加速地址
+$ {  "registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]
+$ }
+```
+执行
+```
+$ systemctl daemon-reload
+$ systemctl restart docker
+```
    
-### 第三步，运行容器编排
+### 第四步，运行容器编排
 
 ```
 $ cd ../../              // 回到asterlab-docker的根目录
