@@ -10,7 +10,7 @@ Docker hub 上的 gopeak/masterlab 镜像已经失效，请勿使用；目前只
 ### 第二步，获取Docker项目代码
 
 ```
-$ git clone https://gitee.com/firego/masterlab-docker.git
+ git clone https://gitee.com/firego/masterlab-docker.git
 # 国外网络请用 https://github.com/gopeak/masterlab-docker.git
 
 ```
@@ -18,35 +18,35 @@ $ git clone https://gitee.com/firego/masterlab-docker.git
 ### 第三步，获取Masterlab程序
 
 ```
-$ cd ./masterlab-docker/www
-$ git clone https://gitee.com/firego/masterlab.git
-$ cd ./masterlab
-$ unzip vendor.zip          // 解压依赖的类库
+ cd ./masterlab-docker/www
+ git clone https://gitee.com/firego/masterlab.git
+ cd ./masterlab
+ unzip vendor.zip          // 解压依赖的类库
 ```
 
 
 ### 第三步 镜像加速（可选）
 创建一个daemon.json文件 
 ```
-$ vim /etc/docker/daemon.json   
+ vim /etc/docker/daemon.json   
 ```
 内容 
 ```
-$ // 使用中国科技大学镜像加速地址,你可以修改为其他加速地址
-$ {  "registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]
-$ }
+ // 使用中国科技大学镜像加速地址,你可以修改为其他加速地址
+ {  "registry-mirrors":["https://docker.mirrors.ustc.edu.cn"]
+ }
 ```
 执行
 ```
-$ systemctl daemon-reload
-$ systemctl restart docker
+ systemctl daemon-reload
+ systemctl restart docker
 ```
    
 ### 第四步，运行容器编排
 
 ```
-$ cd ../../              // 回到asterlab-docker的根目录
-$ docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建议使用国内的加速镜像
+ cd ../../              // 回到asterlab-docker的根目录
+ docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建议使用国内的加速镜像
 ```
 
 启用服务，第一次需要构建镜像
@@ -54,9 +54,9 @@ $ docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建�
 ### 第五步，赋予权限
 
 ```
-$ docker ps                                   // 查看运行的php容器id,假如id为 f4e5af6b62d8
-$ docker exec -it f4e5af6b62d8 /bin/bash      // 进入php 
-$ chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
+ docker ps                                   // 查看运行的php容器id,假如id为 f4e5af6b62d8
+ docker exec -it f4e5af6b62d8 /bin/bash      // 进入php 
+ chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
 ```
 
 
