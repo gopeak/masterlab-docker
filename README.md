@@ -44,7 +44,7 @@ systemctl restart docker
 ### 第四步，运行容器编排
 
 ```
- cd ../../              // 回到asterlab-docker的根目录
+ cd ../../              // 回到masterlab-docker的根目录
  docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建议使用国内的加速镜像
 ```
 
@@ -53,8 +53,8 @@ systemctl restart docker
 ### 第五步，赋予权限
 
 ```
- docker ps                                   // 查看运行的php容器id,假如id为 f4e5af6b62d8
- docker exec -it f4e5af6b62d8 /bin/bash      // 进入php 
+ docker ps                                   // 查看运行已经运行的容器
+ docker exec -it masterlab-docker_php74_1 /bin/bash      // 进入php ,注：中间的masterlab-docker_php74_1可以使用容器id代替
  chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
 ```
 
@@ -66,7 +66,7 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 注: 连接数据库的地址，用户名,密码分别为  
 172.100.0.5 root 123456
 
-安装成功后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
+安装结束后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
 
  
 ### 第七步，启动Swoole服务
