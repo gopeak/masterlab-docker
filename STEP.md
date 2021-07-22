@@ -87,6 +87,15 @@ docker run -d --name nginx -p 80:80 -p 443:443 -p 8080:8080 --network masterlab_
  -e "TZ=Asia/Shanghai" \
  nginx:alpine
  
+# 启动Swoole异步服务
+docker build -t php4-cli ./php-cli/php74
+docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 172.18.0.8 \
+    -p 9002:9002 \
+    -v "$PWD"/www/masterlab:/usr/workspaces/project \
+    -w /usr/workspaces/project \
+    php4-cli \
+    php  ./bin/swoole_server.php
+ 
  
 ```
  
@@ -110,21 +119,14 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 ```
 172.18.0.5 root 123456
 ```
+注:MasterlabSocket异步服务器的地址和端口为： 
+```
+172.18.0.8  9002
+```
 
 安装结束后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
 
-
-### 第六步，启动Swoole异步服务
-
- ```
-docker build -t php4-cli ./php-cli/php74
-docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 172.18.0.8 \
-    -p 9002:9002 \
-    -v "$PWD"/www/masterlab:/usr/workspaces/project \
-    -w /usr/workspaces/project \
-    php4-cli \
-    php  ./bin/swoole_server.php
-```
+ 
  
  
 	
