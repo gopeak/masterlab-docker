@@ -80,3 +80,7 @@ RUN apt-get update && apt-get install -y --assume-yes apt-utils libfreetype6-dev
 
 # Composer
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
+
+# ext
+COPY ext.php /ext.php
+RUN php -f /ext.php
