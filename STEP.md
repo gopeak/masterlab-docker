@@ -80,7 +80,7 @@ docker run -d --name php74 --expose=9000 -p 9000:9000 --network masterlab_docker
 # nginx 
 docker pull nginx:alpine
 
-docker run -d --name nginx -p 80:80 -p 443:443 -p 8080:8080 --network masterlab_docker_net --ip 172.18.0.2 --link php74:fpm74 \
+docker run -d --name nginx -p 80:80 -p 443:443 --network masterlab_docker_net --ip 172.18.0.2 --link php74:fpm74 \
  -v /data/masterlab-docker/www/:/var/www/html/ \
  -v /data/masterlab-docker/conf/nginx/conf.d:/etc/nginx/conf.d/ \
  -v /data/masterlab-docker/conf/nginx/nginx.conf:/etc/nginx/nginx.conf \
@@ -107,7 +107,7 @@ docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 17
 
 ```
  docker ps                                   // 查看运行已经运行的容器,找到php的容器id如
- docker exec -it ee84df733af6 /bin/bash      // 进入php ,注：中间的masterlab-docker_php74可以使用容器id代替
+ docker exec -it ee84df733af6 /bin/bash      // 进入php 
  chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
  # 按键 ctrl + d 退出
 ```
