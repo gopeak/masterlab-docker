@@ -41,8 +41,9 @@ systemctl restart docker
 
 
 ### 第二步 设置网络
-
+```
 docker network create --subnet=172.18.0.0/24 masterlab_docker_net
+```
 
 
 ## 第三步 拉取镜像并启动容器 
@@ -107,7 +108,7 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 
 注: 连接数据库的地址，用户名,密码分别为  
 ```
-172.100.0.5 root 123456
+172.18.0.5 root 123456
 ```
 
 安装结束后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
