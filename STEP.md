@@ -73,7 +73,7 @@ docker run -d --name php74 --expose=9000 -p 9000:9000 --network masterlab_docker
  -v /data/masterlab-docker/conf/php/php74.ini:/usr/local/etc/php/php.ini \
  -v /data/masterlab-docker/conf/php/php-fpm.d/www74.conf:/usr/local/etc/php-fpm.d/www.conf \
  -v /data/masterlab-docker/log/php-fpm/:/var/log/php-fpm/ \
-  php-fpm-74:v1.0
+  gopeak/masterlab:php-fpm-74
  
   
   
@@ -90,11 +90,12 @@ docker run -d --name nginx -p 80:80 -p 443:443 -p 8080:8080 --network masterlab_
  
 # 启动Swoole异步服务
 docker pull gopeak/masterlab:php-cli-74
+
 docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 172.18.0.8 \
     -p 9002:9002 \
     -v "$PWD"/www/masterlab:/usr/workspaces/project \
     -w /usr/workspaces/project \
-    php4-cli \
+    gopeak/masterlab:php-cli-74 \
     php  ./bin/swoole_server.php
  
  
