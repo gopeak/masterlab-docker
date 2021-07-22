@@ -18,8 +18,10 @@ MAINTAINER sven 121642038@qq.com
 
 ENV \
   SWOOLE_DOWNLOAD_URL=https://download.masterlab.vip/swoole-swoole-v4.6.7.tar.gz \
-  REDIS_DOWNLOAD_URL=https://download.masterlab.vip/phpredis-5.2.2.tar.gz  \
   PHPREDIS_VERSION=5.2.2
+
+COPY swoole-swoole-v4.6.7.tar.gz   /usr/src/php/ext/swoole.tar.gz
+COPY phpredis-5.2.2.tar.gz  /usr/src/php/ext/phpredis.tar.gz
 
 # 安装
 RUN apt-get update && apt-get install -y --assume-yes apt-utils libfreetype6-dev libzip-dev libjpeg62-turbo-dev  libonig-dev libpng-dev \
@@ -51,7 +53,7 @@ RUN apt-get update && apt-get install -y --assume-yes apt-utils libfreetype6-dev
     #&& docker-php-ext-install shmop \
     #&& docker-php-ext-install sysvmsg \
     && docker-php-ext-install sysvshm \
-    && docker-php-ext-install opcache  \ 
+    && docker-php-ext-install opcache  \
     && apt-get install -y curl \
 	&& apt-get install -y libldb-dev \
     && apt-get install -y libldap2-dev \
@@ -61,12 +63,12 @@ RUN apt-get update && apt-get install -y --assume-yes apt-utils libfreetype6-dev
     && docker-php-source extract \
     && cd /usr/src/php/ext/ \
     # 安装swoole扩展
-    && curl -sSLo swoole.tar.gz $SWOOLE_DOWNLOAD_URL \
+    #&& curl -sSLo swoole.tar.gz $SWOOLE_DOWNLOAD_URL \
       && tar xzf swoole.tar.gz \
       && rm -f swoole.tar.gz \
     && docker-php-ext-install  -j "$(nproc)" swoole  \
 	# 安装redis扩展  
-	&& curl -sSLo phpredis.tar.gz https://download.masterlab.vip/phpredis-$PHPREDIS_VERSION.tar.gz  \
+	#&& curl -sSLo phpredis.tar.gz https://download.masterlab.vip/phpredis-$PHPREDIS_VERSION.tar.gz  \
     && tar xzf phpredis.tar.gz \ 
 	&& mv phpredis-$PHPREDIS_VERSION redis \
     
