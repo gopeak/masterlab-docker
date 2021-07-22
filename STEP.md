@@ -66,7 +66,8 @@ docker run -d --name redis -p 10379:10379 --network masterlab_docker_net --ip 17
  
 
 # php-fpm7.4 
-# docker  pull gopeak/php-fpm-74:v1.0
+docker pull gopeak/masterlab:php-fpm-74
+
 docker run -d --name php74 --expose=9000 -p 9000:9000 --network masterlab_docker_net --ip 172.18.0.4  --link mysql:mysql --link redis:redis  \
  -v /data/masterlab-docker/www/:/var/www/html/ \
  -v /data/masterlab-docker/conf/php/php74.ini:/usr/local/etc/php/php.ini \
@@ -88,7 +89,7 @@ docker run -d --name nginx -p 80:80 -p 443:443 -p 8080:8080 --network masterlab_
  nginx:alpine
  
 # 启动Swoole异步服务
-docker build -t php4-cli ./php-cli/php74
+docker pull gopeak/masterlab:php-cli-74
 docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 172.18.0.8 \
     -p 9002:9002 \
     -v "$PWD"/www/masterlab:/usr/workspaces/project \
