@@ -1,7 +1,7 @@
-当前项目是以Docker方式安装项目管理工具：Masterlab。目前只支持Masterlab3.0以上版本。  
-提供 Docker Run 和 Docker-compos R 两种方式。
+当前项目是以Docker方式部署项目管理工具：Masterlab, 目前只支持Masterlab3.0以上版本。  
+提供 Docker Run 和 Docker-compos 两种部署方式。
 
-建议使用Docker-compose部署，要使用Docker Run方式的请访问 Docker-Run [https://github.com/gopeak/masterlab-docker/blob/master/STEP.md]
+建议使用Docker-compose部署，要使用Docker Run方式的请访问 [https://github.com/gopeak/masterlab-docker/blob/master/STEP.md]
 
 
 
