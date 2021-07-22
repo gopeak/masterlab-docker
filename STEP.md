@@ -46,7 +46,7 @@ docker network create --subnet=172.18.0.0/24 masterlab_docker_net
 ```
 
 
-## 第三步 拉取镜像并启动容器 
+### 第三步 拉取镜像并启动容器 
 ```
 # mysql5.7 
 docker pull mysql:5.7
