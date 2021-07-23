@@ -41,7 +41,6 @@ systemctl restart docker
 ```
 
 
-
 ### 第二步 设置网络
 ```
 docker network create --subnet=172.18.0.0/24 masterlab_docker_net
@@ -76,8 +75,6 @@ docker run -d --name php74 --expose=9000 -p 9000:9000 --network masterlab_docker
  -v /data/masterlab-docker/conf/php/php-fpm.d/www74.conf:/usr/local/etc/php-fpm.d/www.conf \
  -v /data/masterlab-docker/log/php-fpm/:/var/log/php-fpm/ \
   gopeak/masterlab:php-fpm-74
- 
-  
   
 # nginx 
 docker pull nginx:alpine
