@@ -105,9 +105,12 @@ docker run -d -it --rm --name php74-cli  --network masterlab_docker_net  --ip 17
 ### 第四步，赋予权限
 
 ```
- docker ps                                   // 查看运行已经运行的容器,找到php的容器id如
- docker exec -it ee84df733af6 /bin/bash      // 进入php 
- chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
+ # 查看运行已经运行的容器,找到php的容器id如ee84df733af6 
+ docker ps          
+ # 进入php
+ docker exec -it ee84df733af6 /bin/bash       
+ #  赋予读写权限，执行完 ctrl + d 退出
+ chown -R www-data:www-data ./              
  # 按键 ctrl + d 退出
 ```
 
