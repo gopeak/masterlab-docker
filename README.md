@@ -63,7 +63,7 @@ systemctl restart docker
 启用服务，第一次需要构建镜像
 ```
  cd ../../              // 回到masterlab-docker的根目录
- docker-compose up -d   // 容器编排命令，如果下载镜像很慢，建议使用国内的加速镜像
+ docker-compose up -d   // 容器编排命令
 ```
 容器编排成功后，以后可以使用以下命令控制服务
 ```
