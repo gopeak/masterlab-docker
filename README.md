@@ -40,7 +40,7 @@ gopeak/masterlab:php-cli-74
  git clone https://gitee.com/firego/masterlab.git
  # 海外网络请用 https://github.com/gopeak/masterlab.git
  cd ./masterlab
- unzip vendor.zip          // 解压依赖的类库
+ unzip ./vendor.zip          // 解压依赖的类库
 ```
 
 
