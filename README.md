@@ -109,8 +109,8 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 - 首先，自定义构建 `PHP-CLI` 镜像，安装 `Git`，`Composer`，`Swoole` 等扩展和工具
 
 ```shell
-# 构建镜像
-docker build -t php4-cli ./php-cli/php74
+# 构拉取php-cli镜像
+docker pull gopeak/masterlab:php-cli-74
 ```
 
 
@@ -123,7 +123,7 @@ docker run -d  -it --rm --name www-data  --network masterlabdocker_docker_net  -
     -p 9002:9002 \
     -v "$PWD"/www/masterlab:/usr/workspaces/project \
     -w /usr/workspaces/project \
-    php4-cli \
+    gopeak/masterlab:php-cli-74 \
     php  ./bin/swoole_server.php
 ```
 
