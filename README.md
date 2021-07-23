@@ -10,7 +10,7 @@ gopeak/masterlab:php-cli-74
 
 ```
 
-提供 Docker Run 和 Docker-compos 两种部署方式。
+提供 Docker Run 和 Docker-compose 两种部署方式。
 
 建议使用Docker-compose部署，要使用Docker Run方式的请访问 https://github.com/gopeak/masterlab-docker/blob/master/STEP.md
 
