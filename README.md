@@ -57,7 +57,7 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 ```
-其他操作系统 请参考 [https://www.runoob.com/docker/docker-mirror-acceleration.html]
+其他操作系统 请参考 https://www.runoob.com/docker/docker-mirror-acceleration.html
    
 ### 第四步，运行容器编排
 启用服务，第一次需要构建镜像
