@@ -78,6 +78,7 @@ systemctl restart docker
  docker-compose logs         // 查看服务日志输出
  docker-compose up           // 构建并启动服务
  docker-compose build        // 构建或者重新构建服务
+ docker network ls           // 查看docker的网络配置
 
 ```
 
