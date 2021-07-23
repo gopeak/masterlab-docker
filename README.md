@@ -77,9 +77,13 @@ systemctl restart docker
 ### 第五步，赋予权限
 
 ```
- docker ps                                   // 查看运行已经运行的容器
- docker exec -it masterlab-docker_php74_1 /bin/bash      // 进入php ,注：中间的masterlab-docker_php74_1可以使用容器id代替
- chown -R www-data:www-data ./               // 赋予读写权限，执行完 ctrl + d 退出
+ # 查看运行已经运行的容器,找到php的容器id如ee84df733af6 
+ docker ps          
+ # 进入php
+ docker exec -it ee84df733af6 /bin/bash       
+ #  赋予读写权限，执行完 ctrl + d 退出
+ chown -R www-data:www-data ./              
+ # 按键 ctrl + d 退出
 ```
 
 
