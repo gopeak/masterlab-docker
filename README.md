@@ -67,9 +67,17 @@ systemctl restart docker
 ```
 容器编排成功后，以后可以使用以下命令控制服务
 ```
- docker-compose stop      // 停止服务
- docker-compose start     // 启动服务
- docker-compose restart   // 重启服务
+ docker-compose ps           // 查看运行的容器
+ docker-compose stop         // 停止服务
+ docker-compose start        // 启动服务
+ docker-compose restart      // 重启服务
+ docker-compose start nginx  // 单独启动nginx服务
+ docker-compose stop nginx   // 单独停止nginx服务
+ docker-compose logs         // 查看服务日志输出
+ docker-compose kill nginx   // 通过发送 SIGKILL 信号来停止指定服务的容器
+ docker-compose logs         // 查看服务日志输出
+ docker-compose up           // 构建并启动服务
+ docker-compose build        // 构建或者重新构建服务
 
 ```
 
