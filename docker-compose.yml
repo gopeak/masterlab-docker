@@ -22,7 +22,7 @@ services:
         ipv4_address: ${NGINX_IP}
 
   php74:
-    build: ./php/php74/
+    image: gopeak/masterlab:php-fpm-74
     expose:
       - "9000"
     ports:
