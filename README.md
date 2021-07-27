@@ -42,9 +42,9 @@ gopeak/masterlab:php-cli-74
  cd ./masterlab
  unzip ./vendor.zip          // 解压依赖的类库
 ```
-
-
-### 第三步 配置镜像加速器（可选）
+   
+### 第三步，运行容器编排
+首先应配置镜像加速器（可选）:  
 Linux操作系统针对Docker客户端版本大于 1.10.0 的用户
 您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器 
 ```
@@ -57,10 +57,9 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 ```
-其他操作系统 请参考 https://www.runoob.com/docker/docker-mirror-acceleration.html
-   
-### 第四步，运行容器编排
-启用服务，第一次需要构建镜像
+其他操作系统 请参考 https://www.runoob.com/docker/docker-mirror-acceleration.html  
+
+加速镜像配置完毕后，启用服务，第一次需要构建镜像
 ```
  cd ../../              // 回到masterlab-docker的根目录
  docker-compose up -d   // 容器编排命令
