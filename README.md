@@ -1,6 +1,6 @@
 当前项目是以Docker方式部署项目管理工具：Masterlab, 目前只支持Masterlab3.0以上版本。  
 Masterlab的运行依赖于 Mysql Nginx|Apache PHP环境，Mysql和Nginx直接使用DockerHub的镜像版本，   
-PHP则需要我们构建FPM和Cli镜像，也都push到DockerHub上。  
+PHP则需要我们构建FPM和Cli镜像，已push到DockerHub上。  
 ```
 # 镜像仓库
 https://hub.docker.com/repository/docker/gopeak/masterlab
