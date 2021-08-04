@@ -25,17 +25,12 @@ gopeak/masterlab:php-cli-74
 - docker-compose [https://docs.docker.com/compose/install/#install-compose]
 
 
-### 第一步，获取Docker项目代码
+### 第一步，获取Docker和Masterlab程序
 
 ```
  git clone https://gitee.com/firego/masterlab-docker.git
-# 海外网络请用 https://github.com/gopeak/masterlab-docker.git
+ # 海外网络请用 https://github.com/gopeak/masterlab-docker.git
 
-```
-   
-### 第二步，获取Masterlab程序
-
-```
  cd ./masterlab-docker/www
  git clone https://gitee.com/firego/masterlab.git
  # 海外网络请用 https://github.com/gopeak/masterlab.git
@@ -43,7 +38,7 @@ gopeak/masterlab:php-cli-74
  unzip ./vendor.zip          // 解压依赖的类库
 ```
    
-### 第三步，运行容器编排
+### 第二步，运行容器编排
 首先应配置镜像加速器（可选）:  
 Linux操作系统针对Docker客户端版本大于 1.10.0 的用户
 您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器 
@@ -82,7 +77,7 @@ systemctl restart docker
 ```
 
 
-### 第四步，赋予权限
+### 第三步，赋予权限
 
 ```
  # 查看运行已经运行的容器,找到php的容器id如ee84df733af6 
@@ -95,7 +90,7 @@ systemctl restart docker
 ```
 
 
-### 第五步，访问 /install  进行图形安装界面
+### 第四步，访问 /install  进行图形安装界面
 
 http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www.masterlab.com ，成功后修改为你实际的域名）
 
@@ -105,7 +100,7 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 安装结束后 将 ./conf/nginx/conf.d/masterlab.conf 里的www.masterlab.com为你自己的域名即可
 
  
-### 第六步，启动Swoole服务
+### 第五步，启动Swoole服务
 - 首先，自定义构建 `PHP-CLI` 镜像，安装 `Git`，`Composer`，`Swoole` 等扩展和工具
 
 ```shell
