@@ -108,18 +108,32 @@ http://www.masterlab.com/install （先在hosts里追加：你的服务器ip www
 docker pull gopeak/masterlab:php-cli-74
 ```
 
+- 修改masterlab的配置文件 config.yml,找到 `socket/host`节点，将`127.0.0.1`修改为`0.0.0.0`
+```
+socket:
+  host: '0.0.0.0'
+  port: '10002'
+  port_websocket: 9003
+ 
+```
 
 
 - 启动 `Swoole` 进程
  
 
 ```shell
-docker run -d  -it --rm --name www-data  --network masterlabdocker_docker_net  --ip 172.100.0.8 \
+docker run -d  -it --rm --name www-data  --network masterlab-docker_docker_net  --ip 172.100.0.8 \
     -p 9002:9002 \
     -v "$PWD"/www/masterlab:/usr/workspaces/project \
     -w /usr/workspaces/project \
     gopeak/masterlab:php-cli-74 \
     php  ./bin/swoole_server.php
 ```
+如果network报错，请执行 `docker network ls`查看网络名称,替换掉即可。
+
+- 最后以管理账号登录masterlab,在管理页面"系统设置/邮件配置/修改"，将`MasterlabSocket服务器地址`修改为`172.100.0.8`,`服务器类型`修改为`swoole`  
+  然后回到管理主界面 '/admin/main',查看MasterlabSocket服务的连接状态是否成功。
+
+ 
 
 	
