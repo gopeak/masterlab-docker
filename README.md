@@ -112,7 +112,7 @@ docker pull gopeak/masterlab:php-cli-74
 ```
 socket:
   host: '0.0.0.0'
-  port: '10002'
+  port: '9002'
   port_websocket: 9003
  
 ```
