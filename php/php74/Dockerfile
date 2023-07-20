@@ -17,7 +17,7 @@ MAINTAINER sven 121642038@qq.com
 # 5. Line `&& :\` is just for better reading and do nothing.
 
 ENV \
-  SWOOLE_DOWNLOAD_URL=https://download.masterlab.vip/swoole-swoole-v4.6.7.tar.gz \
+  SWOOLE_DOWNLOAD_URL=https://github.com/swoole/swoole-src/archive/refs/tags/v4.6.7.tar.gz \
   PHPREDIS_VERSION=5.2.2
 
 COPY swoole-swoole-v4.6.7.tar.gz   /usr/src/php/ext/swoole.tar.gz
